@@ -1,6 +1,6 @@
 {
   "name": "geonames-api-typescript",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Abstraction for Geonames open API",
   "main": "index.ts",
   "scripts": {
