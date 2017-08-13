@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "module": "amd",
+        "module": "commonjs",
         "moduleResolution": "node",
         "noImplicitAny": true,
         "removeComments": true,
         "strictNullChecks": true,
-        "outFile": "build/Geonames.js"
+        "outDir": "build/"
     },
     "include": [
         "src/**/*"

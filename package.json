@@ -24,7 +24,10 @@
   "homepage": "https://github.com/victorprocure/geonames-api-typescript#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "querystring": "^0.2.0",
     "typescript": "^2.4.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^8.0.20"
+  }
 }

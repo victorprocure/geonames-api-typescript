@@ -98,6 +98,7 @@ export class Geonames {
 
         this.checkPotentialIssues();
         this.createAxiosInstance();
+        this.checkDefaultConfig();
         this.createServices();
     }
 
@@ -115,6 +116,12 @@ export class Geonames {
         });
 
         this.configuration.axiosInstance = instance;
+    }
+
+    private checkDefaultConfig() {
+        this.configuration.encoding = (this.configuration.encoding) ? this.configuration.encoding : GeonamesFormat.JSON;
+        this.configuration.formatted = (this.configuration.formatted) ? this.configuration.formatted : false;
+        this.configuration.style = (this.configuration.style) ? this.configuration.style : 'FULL';
     }
 
     private createServices() {
@@ -153,7 +160,7 @@ export class Geonames {
         this.siblings = new Siblings(this.configuration);
         this.shuttleRadarTopoM1 = new ShuttleRadarTopoM1(this.configuration);
         this.shuttleRadarTopoM3 = new ShuttleRadarTopoM3(this.configuration);
-        this.timezone= new Timezone(this.configuration);
+        this.timezone = new Timezone(this.configuration);
         this.weather = new Weather(this.configuration);
         this.weatherICAO = new WeatherICAO(this.configuration);
         this.wikipediaBoundingBox = new WikipediaBoundingBox(this.configuration);
