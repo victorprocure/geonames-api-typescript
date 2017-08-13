@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/victorprocure/geonames-api-typescript/issues"
   },
-  "homepage": "https://github.com/victorprocure/geonames-api-typescript#readme"
+  "homepage": "https://github.com/victorprocure/geonames-api-typescript#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {}
 }
