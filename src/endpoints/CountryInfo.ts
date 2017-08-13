@@ -2,6 +2,9 @@ import { GeonamesEndpoint } from './GeonamesEndpoint';
 import { GeonamesConfig } from '../models/GeonamesConfig';
 import { GeonamesFormat } from '../models/GeonamesFormat';
 import { ICountryInfo } from '../models/CountryInfo';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
 
 import * as querystring from 'querystring';
 
@@ -24,13 +27,8 @@ export class CountryInfo extends GeonamesEndpoint {
             type: (this.config.encoding) ? GeonamesFormat[this.config.encoding] : 'JSON'
         });
 
-        return this.config.axiosInstance.get(`${this.webservice}?${qs}`)
-            .then(c => {
-                return c.data;
-            })
-            .then((c: ICountryInfo[]) => {
-                console.log(JSON.stringify(c));
-                return c;
-            });
+        return Observable.fromPromise(this.config.axiosInstance.get(`${this.webservice}?${qs}`))
+            .map(c => c.data)
+            .map(c => c.geonames as ICountryInfo[]);
     }
 }

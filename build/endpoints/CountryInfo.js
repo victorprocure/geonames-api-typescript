@@ -12,6 +12,9 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 var GeonamesEndpoint_1 = require("./GeonamesEndpoint");
 var GeonamesFormat_1 = require("../models/GeonamesFormat");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/observable/fromPromise");
+require("rxjs/add/operator/map");
 var querystring = require("querystring");
 var CountryInfo = (function (_super) {
     __extends(CountryInfo, _super);
@@ -32,10 +35,9 @@ var CountryInfo = (function (_super) {
             username: this.config.username,
             type: (this.config.encoding) ? GeonamesFormat_1.GeonamesFormat[this.config.encoding] : 'JSON'
         });
-        return this.config.axiosInstance.get(this.webservice + "?" + qs)
-            .then(function (c) {
-            console.log(JSON.stringify(c.data));
-        });
+        return Observable_1.Observable.fromPromise(this.config.axiosInstance.get(this.webservice + "?" + qs))
+            .map(function (c) { return c.data; })
+            .map(function (c) { return c.geonames; });
     };
     return CountryInfo;
 }(GeonamesEndpoint_1.GeonamesEndpoint));

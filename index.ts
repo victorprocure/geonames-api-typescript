@@ -1,3 +1,3 @@
 export { Geonames } from './src/Geonames';
-import './src/endpoints';
-import './src/models';
+export * from './src/endpoints';
+export * from './src/models';
