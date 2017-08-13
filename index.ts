@@ -1,3 +1,3 @@
 export { Geonames } from './src/Geonames';
-export * from './src/endpoints';
-export * from './src/models';
+export { default as endpoints } from './src/endpoints';
+export { default as models } from './src/models';
