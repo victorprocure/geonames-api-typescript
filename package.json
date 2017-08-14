@@ -3,9 +3,6 @@
   "version": "1.1.7",
   "description": "Abstraction for Geonames open API",
   "main": "index.ts",
-  "directories": {
-    "bin": "src/"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
