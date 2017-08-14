@@ -15,7 +15,6 @@ var GeonamesFormat_1 = require("../models/GeonamesFormat");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/observable/fromPromise");
 require("rxjs/add/operator/map");
-var querystring = require("querystring");
 var CountryInfo = (function (_super) {
     __extends(CountryInfo, _super);
     function CountryInfo(config) {
@@ -27,14 +26,7 @@ var CountryInfo = (function (_super) {
         if (!this.config.axiosInstance) {
             throw new Error('Unable to call endpoint');
         }
-        var qs = querystring.stringify({
-            country: countryCode,
-            formatted: this.config.formatted || false,
-            style: this.config.style,
-            lang: this.config.lang,
-            username: this.config.username,
-            type: (this.config.encoding) ? GeonamesFormat_1.GeonamesFormat[this.config.encoding] : 'JSON'
-        });
+        var qs = this.buildQueryString(this.config, { country: countryCode });
         return Observable_1.Observable.fromPromise(this.config.axiosInstance.get(this.webservice + "?" + qs))
             .map(function (c) { return c.data; })
             .map(function (c) { return c.geonames; });
